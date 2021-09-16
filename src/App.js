@@ -10,6 +10,9 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CreateArtwork from './components/artwork/CreateArtwork'
+import IndexArtwork from './components/artwork/IndexArtwork'
+import ShowArtwork from './components/artwork/ShowArtwork'
 
 class App extends Component {
   constructor (props) {
@@ -44,7 +47,11 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
+	      <Header
+          msgAlert={this.msgAlert}
+          setUser={this.setUser}
+          user={user}
+        />
 	      {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -84,6 +91,29 @@ class App extends Component {
             path='/change-password'
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/create-artwork'
+            render={() => (
+              <CreateArtwork msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/artworks'
+            render={() => (
+              <IndexArtwork msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/artworks/:id'
+            render={() => (
+              <ShowArtwork msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>

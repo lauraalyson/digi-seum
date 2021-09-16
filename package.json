@@ -1,6 +1,6 @@
 {
-  "homepage": "git@github.com:lauraalyson/digi-seum.git",
-  "name": "react-auth-template",
+  "homepage": "https://lauraalyson.github.io/digi-seum",
+  "name": "digi-seum",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
