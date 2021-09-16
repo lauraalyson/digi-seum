@@ -48,7 +48,7 @@ export const updateArtwork = (data, id, user) => {
   return axios({
     url: apiUrl + '/artworks/' + id,
     method: 'PATCH',
-    data: { friend: data },
+    data: { artwork: data },
     headers: {
       Authorization: `Bearer ${user.token}`
     }

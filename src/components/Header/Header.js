@@ -11,7 +11,7 @@ const authenticatedOptions = (
     <NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink>
     <NavLink to='/create-artwork' className='nav-link'>Create</NavLink>
     <NavLink to='/artworks' className='nav-link'>Creations</NavLink>
-    <NavLink to='/artworks/:id' className='nav-link'>Creation</NavLink>
+    {/* <NavLink to='/artworks/:id' className='nav-link'>Creation</NavLink> */}
   </Fragment>
 )
 

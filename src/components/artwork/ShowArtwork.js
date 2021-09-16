@@ -1,6 +1,7 @@
-// Update and Delete Artwork
+// Show, Delete, and Edit Button Artwork
 import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Route } from 'react-router-dom'
+import UpdateArtwork from '../artwork/UpdateArtwork'
 // API request
 import { showArtwork, deleteArtwork } from '../../api/artwork'
 import Button from 'react-bootstrap/Button'
@@ -32,7 +33,7 @@ handleDelete = (event) => {
 
 render () {
   const { artwork } = this.state
-  const { user } = this.props
+  const { user, history, match } = this.props
 
   return (
     <Fragment>
@@ -44,7 +45,21 @@ render () {
         <>
           <br />
           <Button onClick={this.handleDelete}>Delete</Button>
-          <Button onClick={this.handleUpdate}>Update</Button>
+
+          <Button
+            onClick={() =>
+              history.push(`/artworks/${match.params.id}/edit`)
+            }>
+            Update
+          </Button>
+          <Route
+            user={user}
+            exact
+            path='/artworks/:id/edit'
+            render={() => (
+              <UpdateArtwork msgAlert={this.msgAlert} user={user} />
+            )}
+          />
         </>
       )}
     </Fragment>

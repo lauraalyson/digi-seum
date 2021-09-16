@@ -13,6 +13,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
+import UpdateArtwork from './components/artwork/UpdateArtwork'
 
 class App extends Component {
   constructor (props) {
@@ -114,6 +115,14 @@ class App extends Component {
             path='/artworks/:id'
             render={() => (
               <ShowArtwork msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/artworks/:id/edit'
+            render={() => (
+              <UpdateArtwork msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>
