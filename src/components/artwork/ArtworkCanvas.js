@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import { Stage, Layer, Line, Text } from 'react-konva'
 
-const ArtworkCanvas = () => {
+const ArtworkCanvas = (props) => {
   const [tool, setTool] = useState('pen')
   const [lines, setLines] = useState([])
   const isDrawing = useRef(false)
@@ -34,37 +34,39 @@ const ArtworkCanvas = () => {
     isDrawing.current = false
   }
 
+  const saveDataUri = (e) => {
+    console.log('This is stage: ', Stage)
+    console.log('This is e: ', e)
+  }
+
   return (
+
     <div>
       <select
         value={tool}
         onChange={(e) => {
           setTool(e.target.value)
-        }}
-      >
-        <option value="pen">Pen</option>
-        <option value="eraser">Eraser</option>
+        }}>
+        <option value='pen'>Pen</option>
+        <option value='eraser'>Eraser</option>
       </select>
-      <button id="save">
-        Save as image
-      </button>
+      <button id='save'>Save as image</button>
       <Stage
-        width={window.innerWidth}
-        height={window.innerHeight}
+        width={250}
+        height={250}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
-        onMouseup={handleMouseUp}
-      >
-        <Layer>
-          <Text text="Create Artwork" x={5} y={30} />
+        onMouseup={handleMouseUp}>
+        <Layer onClick={saveDataUri}>
+          <Text text='Create Artwork' x={5} y={30} />
           {lines.map((line, i) => (
             <Line
               key={i}
               points={line.points}
-              stroke="#df4b26"
+              stroke='#df4b26'
               strokeWidth={5}
               tension={0.5}
-              lineCap="round"
+              lineCap='round'
               globalCompositeOperation={
                 line.tool === 'eraser' ? 'destination-out' : 'source-over'
               }
@@ -76,4 +78,4 @@ const ArtworkCanvas = () => {
   )
 }
 
-export default withRouter(ArtworkCanvas)
+export default ArtworkCanvas

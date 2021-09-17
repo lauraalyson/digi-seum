@@ -13,7 +13,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
-import ArtworkCanvas from './components/artwork/ArtworkCanvas'
+import Canvas from './components/artwork/Canvas'
 // import Museum from './components/gallery/Museum'
 
 class App extends Component {
@@ -123,7 +123,7 @@ class App extends Component {
             exact
             path='/artwork-canvas'
             render={() => (
-              <ArtworkCanvas msgAlert={this.msgAlert} user={user} />
+              <Canvas msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>
