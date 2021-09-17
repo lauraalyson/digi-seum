@@ -1,9 +1,9 @@
 import { React, Component } from 'react'
-import { withRouter } from 'react-router-dom'
-import { Layer, Rect, Stage } from 'react-konva'
+// import { withRouter } from 'react-router-dom'
+import { Rect } from 'react-konva'
 // import ArtworkCanvas from './ArtworkCanvas'
 
-class MyRect extends Component {
+class Artwork extends Component {
   constructor (...args) {
     super(...args)
     this.state = {
@@ -32,54 +32,54 @@ class MyRect extends Component {
     )
   }
 }
-class Canvas extends Component {
-  constructor (props) {
-    super(props)
+// class Canvas extends Component {
+//   constructor (props) {
+//     super(props)
 
-    this.state = {
-      url: ''
-    }
-  }
+//     this.state = {
+//       url: ''
+//     }
+//   }
 
-    handleExportClick = (event) => {
-      console.log('this is the event \n', event)
-      // console.log(this.stageRef.getStage().toDataURL({ mimeType: 'image/png' }))
-      const imgUrl = this.stageRef
-        .getStage()
-        .toDataURL({ mimeType: 'image/png' })
+//     handleExportClick = (event) => {
+//       console.log('this is the event \n', event)
+//       // console.log(this.stageRef.getStage().toDataURL({ mimeType: 'image/png' }))
+//       const imgUrl = this.stageRef
+//         .getStage()
+//         .toDataURL({ mimeType: 'image/png' })
 
-      console.log('this is imgURL \n', imgUrl)
-      this.setState({ url: imgUrl })
-      console.log('this is now the state of the url', this.state.url)
-    }
+//       console.log('this is imgURL \n', imgUrl)
+//       this.setState({ url: imgUrl })
+//       console.log('this is now the state of the url', this.state.url)
+//     }
 
-    // handleShowImage = (event) => {
+//     // handleShowImage = (event) => {
 
-    // }
+//     // }
 
-    render () {
-      return (
-        <div>
-          <Stage
-            width={700}
-            height={700}
-            ref={(node) => {
-              this.stageRef = node
-            }}>
-            <Layer>
-              <MyRect />
-              {/* <ArtworkCanvas /> */}
-            </Layer>
-          </Stage>
-          <button
-            style={{ position: 'absolute', top: '0' }}
-            onClick={this.handleExportClick}>
-                Export stage
-          </button>
-          <p><img src={this.state.url}/>{this.state.url}</p>
-        </div>
-      )
-    }
-}
+//     render () {
+//       return (
+//         <div>
+//           <Stage
+//             width={700}
+//             height={700}
+//             ref={(node) => {
+//               this.stageRef = node
+//             }}>
+//             <Layer>
+//               <MyRect />
+//               {/* <ArtworkCanvas /> */}
+//             </Layer>
+//           </Stage>
+//           <button
+//             style={{ position: 'absolute', top: '0' }}
+//             onClick={this.handleExportClick}>
+//                 Export stage
+//           </button>
+//           <p><img src={this.state.url}/>{this.state.url}</p>
+//         </div>
+//       )
+//     }
+// }
 
-export default withRouter(Canvas)
+export default Artwork
