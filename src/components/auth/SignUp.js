@@ -33,7 +33,6 @@ onSignUp = (event) => {
   const { msgAlert, history, setUser } = this.props
 
   signUp(this.state)
-    .then((res) => console.log('this is res in sigh up', res))
     .then(() => signIn(this.state))
     .then((res) => setUser(res.data.user))
     .then(() =>
@@ -55,7 +54,6 @@ onSignUp = (event) => {
 }
 
 render () {
-  // console.log('this is state in sign up', this.state)
   const { username, password, passwordConfirmation } = this.state
 
   return (

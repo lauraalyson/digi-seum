@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { indexArtwork } from '../../api/artwork'
+import Museum from '../gallery/Museum'
 import './../../index.scss'
 
 class IndexArtwork extends Component {
@@ -14,8 +15,7 @@ class IndexArtwork extends Component {
   }
 
   componentDidMount () {
-    const { user, artworks } = this.props
-    console.log('This is artwork in component did mount: \n', artworks)
+    const { user } = this.props
     indexArtwork(user)
       .then((res) => {
         this.setState({ artworks: res.data.artworks })
@@ -24,15 +24,13 @@ class IndexArtwork extends Component {
 
   render (res) {
     const { artworks } = this.state
-    console.log('this is artwork in index \n', artworks)
-    console.log('This is this.state in index: \n', this.state)
 
     let artworkJsx
     if (artworks.length === 0) {
       artworkJsx = 'Create some artwork!'
     } else {
       artworkJsx = artworks.map((artwork) => (
-        <li key={artwork._id}>
+        <li className='artwork-gallery' key={artwork._id}>
           <Link to={`/artworks/${artwork._id}`}>
             {artwork.title}
             <br />
@@ -46,6 +44,7 @@ class IndexArtwork extends Component {
       <>
         <h3>Creations</h3>
         <p>{artworkJsx}</p>
+        <Museum />
       </>
     )
   }

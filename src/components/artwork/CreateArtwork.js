@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { createArtwork } from '../../api/artwork'
+import Artwork from '../artwork/Canvas'
+import { Layer, Stage } from 'react-konva'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import ArtworkCanvas from './ArtworkCanvas'
+// import Artwork from './Canvas'
 
 class CreateArtwork extends Component {
   constructor (props) {
@@ -17,72 +21,85 @@ class CreateArtwork extends Component {
     }
   }
 
-handleChange = (event) =>
-  this.setState({
-    [event.target.name]: event.target.value
-  })
+    handleExportClick = (event) => {
+      const imgUrl = this.stageRef.getStage().toDataURL({ mimeType: 'image/png' })
+      this.setState({ img: imgUrl })
+    }
 
-onCreateArtwork = (event) => {
-  event.preventDefault()
+    handleChange = (event) =>
+      this.setState({
+        [event.target.name]: event.target.value
+      })
 
-  const { history, user } = this.props
-  const data = this.state
+    onFindUrl = (event) => {
+      this.setState({ img: this.state.img })
+    }
 
-  createArtwork(data, user)
-    .then((res) => history.push('/artworks/' + res.data.artwork._id))
-    .then(() => this.setState({ title: '', description: '', img: '' }))
-    .catch((err) => console.log(console.log(err))
-    )
-}
+    onCreateArtwork = (event) => {
+      event.preventDefault()
 
-render () {
-  const { title, description, img } = this.state
-  // location
+      const { history, user } = this.props
+      const data = this.state
 
-  return (
-    <div className='row'>
-      <div className='col-sm-10 col-sm-8 mx-auto mt-5'>
-        <Form onSubmit={this.onCreateArtwork}>
+      createArtwork(data, user)
+        .then((res) => history.push('/artworks/' + res.data.artwork._id))
+        .then(() => this.setState({ title: '', description: '', img: '' }))
+        .catch((err) => console.log(console.log(err)))
+    }
 
-          <Form.Group controlId='title'>
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              type='text'
-              name='title'
-              value={title}
-              placeholder='Title'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
+    render () {
+      const { title, description } = this.state
+      // location
 
-          <Form.Group controlId='description'>
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              type='text'
-              name='description'
-              value={description}
-              placeholder='Description'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
+      return (
+        <div>
+          <div className='row'>
+            <div className='col-4'>
+              <Form onSubmit={this.onCreateArtwork}>
+                <Form.Group controlId='title'>
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type='text'
+                    name='title'
+                    value={title}
+                    placeholder='Title'
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
 
-          <Form.Group controlId='img'>
-            <Form.Label>Image</Form.Label>
-            <Form.Control
-              type='text'
-              name='img'
-              value={img}
-              placeholder='Image'
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-
-          <Button variant='primary' type='submit'>Create</Button>
-        </Form>
-      </div>
-    </div>
-  )
-}
+                <Form.Group controlId='description'>
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    type='text'
+                    name='description'
+                    value={description}
+                    placeholder='Description'
+                    onChange={this.handleChange}
+                  />
+                </Form.Group>
+                <Stage
+                  ref={(node) => {
+                    this.stageRef = node
+                  }}
+                  width={300}
+                  height={300}>
+                  <Layer>
+                    <Artwork />
+                  </Layer>
+                </Stage>
+                <Button
+                  variant='primary'
+                  type='submit'
+                  style={{ position: 'relative' }}
+                  onClick={this.handleExportClick}>Create
+                </Button>
+              </Form>
+            </div>
+            <div className='col-8'></div>
+          </div>
+        </div>
+      )
+    }
 }
 
 export default withRouter(CreateArtwork)

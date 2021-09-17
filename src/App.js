@@ -13,6 +13,8 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
+import ArtworkCanvas from './components/artwork/ArtworkCanvas'
+// import Museum from './components/gallery/Museum'
 
 class App extends Component {
   constructor (props) {
@@ -47,12 +49,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header
-          msgAlert={this.msgAlert}
-          setUser={this.setUser}
-          user={user}
-        />
-	      {msgAlerts.map((msgAlert) => (
+        <Header msgAlert={this.msgAlert} setUser={this.setUser} user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -62,8 +60,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container-fluid'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -104,16 +102,20 @@ class App extends Component {
             user={user}
             exact
             path='/artworks'
-            render={() => (
-              <IndexArtwork msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <IndexArtwork msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
             exact
             path='/artworks/:id'
+            render={() => <ShowArtwork msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/artwork-canvas'
             render={() => (
-              <ShowArtwork msgAlert={this.msgAlert} user={user} />
+              <ArtworkCanvas msgAlert={this.msgAlert} user={user} />
             )}
           />
         </main>
