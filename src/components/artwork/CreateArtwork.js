@@ -54,7 +54,7 @@ class CreateArtwork extends Component {
       return (
         <div>
           <div className='row'>
-            <div className='col-sm-10 col-sm-8 mx-auto mt-5'>
+            <div className='col-4'>
               <Form onSubmit={this.onCreateArtwork}>
                 <Form.Group controlId='title'>
                   <Form.Label>Title</Form.Label>
@@ -91,11 +91,11 @@ class CreateArtwork extends Component {
                   variant='primary'
                   type='submit'
                   style={{ position: 'relative' }}
-                  onClick={this.handleExportClick}
-                >Create
+                  onClick={this.handleExportClick}>Create
                 </Button>
               </Form>
             </div>
+            <div className='col-8'></div>
           </div>
         </div>
       )

@@ -19,8 +19,8 @@ class Museum extends Component {
   }
 
   handleClick (event) {
-    const x = event.nativeEvent.clientX - 120
-    const y = event.nativeEvent.clientY - 525
+    const x = event.nativeEvent.clientX
+    const y = event.nativeEvent.clientY
     console.log('This is event.native event', event.nativeEvent)
     console.log('this is x: ', x)
     console.log('this is y: ', y)

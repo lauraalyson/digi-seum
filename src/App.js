@@ -49,12 +49,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header
-          msgAlert={this.msgAlert}
-          setUser={this.setUser}
-          user={user}
-        />
-	      {msgAlerts.map((msgAlert) => (
+        <Header msgAlert={this.msgAlert} setUser={this.setUser} user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -64,8 +60,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container-fluid'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -106,17 +102,13 @@ class App extends Component {
             user={user}
             exact
             path='/artworks'
-            render={() => (
-              <IndexArtwork msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <IndexArtwork msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
             exact
             path='/artworks/:id'
-            render={() => (
-              <ShowArtwork msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <ShowArtwork msgAlert={this.msgAlert} user={user} />}
           />
           <AuthenticatedRoute
             user={user}
