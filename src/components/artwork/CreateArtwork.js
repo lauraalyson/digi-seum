@@ -7,6 +7,8 @@ import { Layer, Stage } from 'react-konva'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import ArtworkCanvas from './ArtworkCanvas'
+// import Artwork from './Canvas'
 
 class CreateArtwork extends Component {
   constructor (props) {
@@ -51,31 +53,11 @@ class CreateArtwork extends Component {
     }
 
     render () {
-      const { title, description, img } = this.state
+      const { title, description } = this.state
       // location
 
       return (
         <div>
-          <div>
-            <Stage
-              width={700}
-              height={700}
-              ref={(node) => {
-                this.stageRef = node
-              }}>
-              <Layer>
-                <Artwork />
-              </Layer>
-            </Stage>
-            <button
-              style={{ position: 'absolute', top: '0' }}
-              onClick={this.handleExportClick}> Export stage
-            </button>
-            <p>
-              <img src={this.state.url} />
-              {this.state.url}
-            </p>
-          </div>
           <div className='row'>
             <div className='col-sm-10 col-sm-8 mx-auto mt-5'>
               <Form onSubmit={this.onCreateArtwork}>
@@ -100,19 +82,23 @@ class CreateArtwork extends Component {
                     onChange={this.handleChange}
                   />
                 </Form.Group>
-
-                <Form.Group controlId='img'>
-                  <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    type='text'
-                    name='img'
-                    value={img}
-                    placeholder='Image'
-                    onChange={this.handleChange}
-                  />
-                </Form.Group>
-
-                <Button variant='primary' type='submit'>Create</Button>
+                <Stage
+                  ref={(node) => {
+                    this.stageRef = node
+                  }}
+                  width={300}
+                  height={300}>
+                  <Layer>
+                    <Artwork />
+                  </Layer>
+                </Stage>
+                <Button
+                  variant='primary'
+                  type='submit'
+                  style={{ position: 'relative' }}
+                  onClick={this.handleExportClick}
+                >Create
+                </Button>
               </Form>
             </div>
           </div>

@@ -1,85 +1,95 @@
-import { React, Component } from 'react'
-// import { withRouter } from 'react-router-dom'
-import { Rect } from 'react-konva'
-// import ArtworkCanvas from './ArtworkCanvas'
+import React, { Component } from 'react'
+import { Image } from 'react-konva'
 
 class Artwork extends Component {
-  constructor (...args) {
-    super(...args)
-    this.state = {
-      color: 'green'
+    state = {
+      isDrawing: false,
+      mode: 'brush'
     }
-    this.handleClick = this.handleClick.bind(this)
-  }
 
-  handleClick () {
-    this.setState({
-      color: 'red'
-    })
-  }
+    componentDidMount () {
+      const canvas = document.createElement('canvas')
+      canvas.width = 300
+      canvas.height = 300
+      const context = canvas.getContext('2d')
 
-  render () {
-    return (
-      <Rect
-        x={10}
-        y={10}
-        width={50}
-        height={50}
-        fill={this.state.color}
-        shadowBlur={10}
-        onClick={this.handleClick}
-      />
-    )
-  }
+      this.setState({ canvas, context })
+    }
+
+    handleMouseDown = () => {
+      console.log('mousedown')
+      this.setState({ isDrawing: true })
+
+      // TODO: improve
+      const stage = this.image.parent.parent
+      this.lastPointerPosition = stage.getPointerPosition()
+    }
+
+    handleMouseUp = () => {
+      console.log('mouseup')
+      this.setState({ isDrawing: false })
+    }
+
+    handleMouseMove = () => {
+      // console.log('mousemove');
+      const { context, isDrawing, mode } = this.state
+
+      if (isDrawing) {
+        console.log('drawing')
+
+        // TODO: Don't always get a new context
+        context.strokeStyle = '#df4b26'
+        context.lineJoin = 'round'
+        context.lineWidth = 5
+
+        if (mode === 'brush') {
+          context.globalCompositeOperation = 'source-over'
+        } else if (mode === 'eraser') {
+          context.globalCompositeOperation = 'destination-out'
+        }
+        context.beginPath()
+
+        let localPos = {
+          x: this.lastPointerPosition.x - this.image.x(),
+          y: this.lastPointerPosition.y - this.image.y()
+        }
+        console.log('moveTo', localPos)
+        context.moveTo(localPos.x, localPos.y)
+
+        // TODO: improve
+        const stage = this.image.parent.parent
+
+        const pos = stage.getPointerPosition()
+        localPos = {
+          x: pos.x - this.image.x(),
+          y: pos.y - this.image.y()
+        }
+        console.log('lineTo', localPos)
+        context.lineTo(localPos.x, localPos.y)
+        context.closePath()
+        context.stroke()
+        this.lastPointerPosition = pos
+        this.image.getLayer().draw()
+      }
+    }
+
+    render () {
+      const { canvas } = this.state
+      console.log('canvas', canvas)
+
+      return (
+        <Image
+          image={canvas}
+          ref={(node) => (this.image = node)}
+          width={300}
+          height={300}
+          stroke='blue'
+          onMouseDown={this.handleMouseDown}
+          onMouseUp={this.handleMouseUp}
+          onMouseMove={this.handleMouseMove}
+        />
+      )
+    }
 }
-// class Canvas extends Component {
-//   constructor (props) {
-//     super(props)
-
-//     this.state = {
-//       url: ''
-//     }
-//   }
-
-//     handleExportClick = (event) => {
-//       console.log('this is the event \n', event)
-//       // console.log(this.stageRef.getStage().toDataURL({ mimeType: 'image/png' }))
-//       const imgUrl = this.stageRef
-//         .getStage()
-//         .toDataURL({ mimeType: 'image/png' })
-
-//       console.log('this is imgURL \n', imgUrl)
-//       this.setState({ url: imgUrl })
-//       console.log('this is now the state of the url', this.state.url)
-//     }
-
-//     // handleShowImage = (event) => {
-
-//     // }
-
-//     render () {
-//       return (
-//         <div>
-//           <Stage
-//             width={700}
-//             height={700}
-//             ref={(node) => {
-//               this.stageRef = node
-//             }}>
-//             <Layer>
-//               <MyRect />
-//               {/* <ArtworkCanvas /> */}
-//             </Layer>
-//           </Stage>
-//           <button
-//             style={{ position: 'absolute', top: '0' }}
-//             onClick={this.handleExportClick}>
-//                 Export stage
-//           </button>
-//           <p><img src={this.state.url}/>{this.state.url}</p>
-//         </div>
-//       )
-//     }
-// }
 
 export default Artwork

@@ -52,8 +52,8 @@ const ArtworkCanvas = (props) => {
       </select>
       <button id='save'>Save as image</button>
       <Stage
-        width={250}
-        height={250}
+        width={500}
+        height={500}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}>
