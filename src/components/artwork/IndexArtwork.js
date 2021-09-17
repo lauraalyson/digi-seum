@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { indexArtwork } from '../../api/artwork'
+import Museum from '../gallery/Museum'
 import './../../index.scss'
 
 class IndexArtwork extends Component {
@@ -32,7 +33,7 @@ class IndexArtwork extends Component {
       artworkJsx = 'Create some artwork!'
     } else {
       artworkJsx = artworks.map((artwork) => (
-        <li key={artwork._id}>
+        <li className='artwork-gallery' key={artwork._id}>
           <Link to={`/artworks/${artwork._id}`}>
             {artwork.title}
             <br />
@@ -46,6 +47,7 @@ class IndexArtwork extends Component {
       <>
         <h3>Creations</h3>
         <p>{artworkJsx}</p>
+        <Museum />
       </>
     )
   }
