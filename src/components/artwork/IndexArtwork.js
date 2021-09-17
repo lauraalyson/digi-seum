@@ -15,8 +15,7 @@ class IndexArtwork extends Component {
   }
 
   componentDidMount () {
-    const { user, artworks } = this.props
-    console.log('This is artwork in component did mount: \n', artworks)
+    const { user } = this.props
     indexArtwork(user)
       .then((res) => {
         this.setState({ artworks: res.data.artworks })
@@ -25,8 +24,6 @@ class IndexArtwork extends Component {
 
   render (res) {
     const { artworks } = this.state
-    console.log('this is artwork in index \n', artworks)
-    console.log('This is this.state in index: \n', this.state)
 
     let artworkJsx
     if (artworks.length === 0) {

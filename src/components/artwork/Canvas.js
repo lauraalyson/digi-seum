@@ -17,27 +17,19 @@ class Artwork extends Component {
     }
 
     handleMouseDown = () => {
-      console.log('mousedown')
       this.setState({ isDrawing: true })
-
-      // TODO: improve
       const stage = this.image.parent.parent
       this.lastPointerPosition = stage.getPointerPosition()
     }
 
     handleMouseUp = () => {
-      console.log('mouseup')
       this.setState({ isDrawing: false })
     }
 
     handleMouseMove = () => {
-      // console.log('mousemove');
       const { context, isDrawing, mode } = this.state
 
       if (isDrawing) {
-        console.log('drawing')
-
-        // TODO: Don't always get a new context
         context.strokeStyle = '#df4b26'
         context.lineJoin = 'round'
         context.lineWidth = 5
@@ -75,7 +67,6 @@ class Artwork extends Component {
 
     render () {
       const { canvas } = this.state
-      console.log('canvas', canvas)
 
       return (
         <Image

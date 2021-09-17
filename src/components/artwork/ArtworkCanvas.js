@@ -34,11 +34,6 @@ const ArtworkCanvas = (props) => {
     isDrawing.current = false
   }
 
-  const saveDataUri = (e) => {
-    console.log('This is stage: ', Stage)
-    console.log('This is e: ', e)
-  }
-
   return (
 
     <div>
@@ -57,7 +52,7 @@ const ArtworkCanvas = (props) => {
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}>
-        <Layer onClick={saveDataUri}>
+        <Layer>
           <Text text='Create Artwork' x={5} y={30} />
           {lines.map((line, i) => (
             <Line

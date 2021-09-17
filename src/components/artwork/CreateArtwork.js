@@ -22,13 +22,8 @@ class CreateArtwork extends Component {
   }
 
     handleExportClick = (event) => {
-      console.log('this is the event \n', event)
-      // console.log(this.stageRef.getStage().toDataURL({ mimeType: 'image/png' }))
       const imgUrl = this.stageRef.getStage().toDataURL({ mimeType: 'image/png' })
-
-      console.log('this is imgURL \n', imgUrl)
       this.setState({ img: imgUrl })
-      console.log('this is now the state of the url', this.state.img)
     }
 
     handleChange = (event) =>

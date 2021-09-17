@@ -53,7 +53,7 @@ handleUpdateSubmit = (event) => {
   const id = match.params.id
 
   updateArtwork(data, id, user)
-    .then(() => this.setState({ updateArt: { title: '', description: '', img: '' } }))
+    .then(() => this.setState({ updateArt: { title: '', description: '' } }))
     .then(() => history.push('/artworks'))
     .then(() => {
       msgAlert({
@@ -117,7 +117,7 @@ render () {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              <Form.Group controlId='img'>
+              {/* <Form.Group controlId='img'>
                 <Form.Label>Image</Form.Label>
                 <Form.Control
                   required
@@ -126,7 +126,7 @@ render () {
                   placeholder='Image Link'
                   onChange={this.handleChange}
                 />
-              </Form.Group>
+              </Form.Group> */}
               <Button
                 variant='primary'
                 type='submit'
