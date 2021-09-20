@@ -8,28 +8,31 @@ class ClassicArtRandom extends Component {
     super(props)
 
     this.state = {
-      randomImg: ''
+      randomImg: 'https://assets.vogue.com/photos/5dc9ad8d12f8b9000993012e/master/w_2560%2Cc_limit/61041127%252520(1).jpg',
+      artistBio: 'Signed and dated ‘Dalí 1953’ (lower center)',
+      artist: 'Salvador Dalí',
+      title: 'Femmes aux Papillons'
     }
   }
 
     getData = (event) => {
-      getRandomArtwork()
-        .then(
-          console.log((res) => console.log('This is the response from the get request: \n', res))
-        )
+      getRandomArtwork('/436009')
+        .then((res) => this.setState({
+          randomImg: res.data.primaryImage,
+          artistBio: res.data.artistDisplayBio,
+          title: res.data.title,
+          artist: res.data.artistDisplayName
+        }))
     }
 
     render () {
+      const { randomImg, artist, artistBio, title } = this.state
       return (
         <>
-          {/* <Button onSubmit={this.getData}>Submit</Button> */}
-          <Button className='custom-button primary'>Get Image</Button><br />
-          <img src={this.state.randomImg}/>
-          <img className='randomImg' src='https://assets.vogue.com/photos/5dc9ad8d12f8b9000993012e/master/w_2560%2Cc_limit/61041127%252520(1).jpg' />
-          <p>
-        Salvador Dalí (1904–1989) <br />
-        Femmes aux Papillons, signed and dated ‘Dalí 1953’ (lower center)
-          </p>
+          <img src={randomImg}/>
+          <h3>{title}</h3>
+          <p>{artist}, <i>{artistBio}</i></p>
+          <Button onClick={this.getData} className='button-custom primary'>Get Inspired</Button><br />
         </>
       )
     }

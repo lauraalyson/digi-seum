@@ -1,10 +1,11 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const getRandomArtwork = () => {
+export const getRandomArtwork = (artworkId) => {
+  console.log('this is artworkId in api call', artworkId)
   return axios({
     method: 'GET',
-    url: 'https://collectionapi.metmuseum.org/public/collection/v1/objects'
+    url: 'https://collectionapi.metmuseum.org/public/collection/v1/objects' + artworkId
   })
 }
 

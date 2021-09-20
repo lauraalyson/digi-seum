@@ -6,15 +6,17 @@ $secondary: rgb(168,168,144);
 $tertiary:  rgb(44,39,32);
 
 .primary {
-    background-color: $primary,
+    background-color: $primary;
+    border-color: $primary;
 }
 
 .primary:hover, .primary:active {
     background-color: $secondary;
+    border-color: $secondary;
 }
 
 button {
-    border:none;
+    border: none;
 }
 
 .dropdown-item:active {

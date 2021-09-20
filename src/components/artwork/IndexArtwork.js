@@ -31,8 +31,7 @@ class IndexArtwork extends Component {
     } else {
       artworkJsx = artworks.map((artwork) => (
         <li className='artwork-gallery' key={artwork._id}>
-          <Link to={`/artworks/${artwork._id}`}><h3></h3>
-            {artwork.title}
+          <Link to={`/artworks/${artwork._id}`}><h3>{artwork.title}</h3>
             <br />
             <img className='gallery-zoom' src={artwork.img}/>
           </Link>
