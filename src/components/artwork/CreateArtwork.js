@@ -53,7 +53,7 @@ class CreateArtwork extends Component {
       return (
         <div>
           <div className='row'>
-            <div className='col-4 create-form'>
+            <div className='col-5 create-form'>
               <Form onSubmit={this.onCreateArtwork}>
                 <Form.Group controlId='title'>
                   <h5>Title</h5>
@@ -98,7 +98,7 @@ class CreateArtwork extends Component {
                 </Button>
               </Form>
             </div>
-            <div className='col-8'>
+            <div className='col-7'>
               <ClassicArtRandom />
             </div>
           </div>
