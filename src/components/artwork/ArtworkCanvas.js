@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import './../../index.scss'
 // import { withRouter } from 'react-router-dom'
 import { Stage, Layer, Line, Text } from 'react-konva'
 
@@ -45,7 +46,7 @@ const ArtworkCanvas = (props) => {
         <option value='pen'>Pen</option>
         <option value='eraser'>Eraser</option>
       </select>
-      <button id='save'>Save as image</button>
+      <button className='primary' id='save'><h3>Save</h3></button>
       <Stage
         width={500}
         height={500}
@@ -58,7 +59,7 @@ const ArtworkCanvas = (props) => {
             <Line
               key={i}
               points={line.points}
-              stroke='#df4b26'
+              stroke='rgb(45,41,34)'
               strokeWidth={5}
               tension={0.5}
               lineCap='round'

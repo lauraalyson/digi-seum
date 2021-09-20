@@ -7,6 +7,7 @@ import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import './../../index.scss'
 
 class SignUp extends Component {
   constructor (props) {
@@ -58,7 +59,7 @@ render () {
 
   return (
     <Fragment>
-      <Button variant='primary' onClick={this.handleShow}>Sign Up
+      <Button className='primary' style={{ border: 'none', borderRadius: '30px', margin: '6px 10px' }} onClick={this.handleShow}>Sign Up
       </Button>
       <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
@@ -100,16 +101,12 @@ render () {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button variant='primary' type='submit'>Submit
+            <br />
+            <Button className='primary' type='submit'>Submit
             </Button>
+            <br />
           </Form>
         </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant='secondary' onClick={this.handleClose}>Close
-          </Button>
-        </Modal.Footer>
-
       </Modal>
     </Fragment>
   )

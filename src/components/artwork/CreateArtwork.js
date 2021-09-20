@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
 import { createArtwork } from '../../api/artwork'
-import Artwork from '../artwork/Canvas'
-import { Layer, Stage } from 'react-konva'
 
+import ClassicArtRandom from './ClassicArtRandom'
+import Artwork from '../artwork/Canvas'
+
+import '../../index.scss'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import ArtworkCanvas from './ArtworkCanvas'
-// import Artwork from './Canvas'
+import { Layer, Stage } from 'react-konva'
 
 class CreateArtwork extends Component {
   constructor (props) {
@@ -49,53 +49,58 @@ class CreateArtwork extends Component {
 
     render () {
       const { title, description } = this.state
-      // location
 
       return (
         <div>
           <div className='row'>
-            <div className='col-4'>
+            <div className='col-4 create-form'>
               <Form onSubmit={this.onCreateArtwork}>
                 <Form.Group controlId='title'>
-                  <Form.Label>Title</Form.Label>
+                  <h5>Title</h5>
                   <Form.Control
                     type='text'
                     name='title'
                     value={title}
-                    placeholder='Title'
+                    placeholder='Give your work a title'
                     onChange={this.handleChange}
                   />
-                </Form.Group>
+                </Form.Group><br />
 
                 <Form.Group controlId='description'>
-                  <Form.Label>Description</Form.Label>
+                  <h5>Description</h5>
                   <Form.Control
                     type='text'
                     name='description'
                     value={description}
-                    placeholder='Description'
+                    placeholder='Give your work a description'
                     onChange={this.handleChange}
                   />
                 </Form.Group>
+                <br />
                 <Stage
                   ref={(node) => {
                     this.stageRef = node
                   }}
+                  background={'white'}
                   width={300}
-                  height={300}>
+                  height={300}
+                >
                   <Layer>
                     <Artwork />
                   </Layer>
                 </Stage>
+                <br />
                 <Button
-                  variant='primary'
+                  className='button-custom create-button'
                   type='submit'
                   style={{ position: 'relative' }}
                   onClick={this.handleExportClick}>Create
                 </Button>
               </Form>
             </div>
-            <div className='col-8'></div>
+            <div className='col-8'>
+              <ClassicArtRandom />
+            </div>
           </div>
         </div>
       )

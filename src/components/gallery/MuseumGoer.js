@@ -13,9 +13,9 @@ class MuseumGoer extends Component {
   render () {
     const { x, y } = this.props.position
     return (
-      <span
-        style={{ ...this.style, top: `${y}px`, left: `${x}px` }}
-      >🧍</span>
+      <span style={{ ...this.style, top: `${y}px`, left: `${x}px` }}>
+        <img src='https://media.giphy.com/media/VcvtuKWp1ySrISx7U7/giphy.gif' />
+      </span>
     )
   }
 }

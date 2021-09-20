@@ -1,6 +1,7 @@
 // Show, Delete, and Edit Button Artwork
 import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
+import './../../index.scss'
 
 // API calls
 import { updateArtwork, showArtwork, deleteArtwork } from '../../api/artwork'
@@ -82,11 +83,11 @@ render () {
       <p>{artwork.description}</p>
       <img src={artwork.img} />
       <br />
-      <Button onClick={this.handleDelete}>Delete</Button>
+      <Button className='primary' onClick={this.handleDelete}>Delete</Button>
 
       {/* update modal */}
       <>
-        <Button variant='primary' onClick={this.handleShow}>
+        <Button className='primary' onClick={this.handleShow}>
         Update
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
@@ -117,18 +118,8 @@ render () {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-              {/* <Form.Group controlId='img'>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  required
-                  name='img'
-                  type='text'
-                  placeholder='Image Link'
-                  onChange={this.handleChange}
-                />
-              </Form.Group> */}
               <Button
-                variant='primary'
+                className='primary'
                 type='submit'
                 onClick={this.handleClose}>
               Update
