@@ -34,7 +34,7 @@ class IndexArtwork extends Component {
           <Link to={`/artworks/${artwork._id}`}>
             {artwork.title}
             <br />
-            <img src={artwork.img}/>
+            <img className='gallery-zoom' src={artwork.img}/>
           </Link>
         </li>
       ))

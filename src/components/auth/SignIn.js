@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import './../../index.scss'
 
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
@@ -54,7 +55,7 @@ render () {
 
   return (
     <>
-      <Button variant='primary' onClick={this.handleShow}>
+      <Button className='primary' style={{ border: 'none', borderRadius: '30px', margin: '6px 10px' }} onClick={this.handleShow}>
         Sign In
       </Button>
       <Modal show={this.state.show} onHide={this.handleClose}>
@@ -86,16 +87,13 @@ render () {
                 onChange={this.handleChange}
               />
             </Form.Group>
-            <Button variant='primary' type='submit'>
+            <br />
+            <Button className='primary' type='submit'>
               Submit
             </Button>
+            <br />
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={this.handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   )

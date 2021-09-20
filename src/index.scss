@@ -1,8 +1,107 @@
 @import '~bootstrap/scss/bootstrap';
-img {
-    max-width: 150px;
+@import url("https://use.typekit.net/uqi5muh.css");
+
+$primary: rgb(145,142,113);
+$secondary: rgb(168,168,144);
+$tertiary:  rgb(44,39,32);
+
+.primary {
+    background-color: $primary
 }
 
-// gallery-artwork {
-//     z-index: 11;
-// }
+.primary:hover {
+    background-color: $secondary;
+}
+
+.dropdown-item:active {
+    background-color: transparent;
+}
+
+// Global
+body, #root {
+    background-color: rgb(249,249,249);
+    margin: 0% 1%;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+h1 {
+    font-size: 3.4rem;
+    color: rgb(168,168,144);
+    font-family: haboro-contrast-extended, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+h2, h3, h4, h5, h6, p, button, input, nav, li, ul, link, .form-label {
+    font-family: roc-grotesk, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(44,39,32);
+}
+
+img {
+    max-width: 250px;
+}
+
+.randomImg {
+    width: 100%;
+}
+
+.button-custom{
+    border-radius: 20px;
+}
+
+// Homepage
+.homepage-main {
+    margin: 15% 5%;
+    display: flex;
+}
+
+.create-form {
+    background-color: $secondary;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.create-button {
+    background-color: rgb(249,249,249);
+    border: none;
+    color: $secondary;
+}
+
+.create-button:hover {
+    background-color: rgb(249,249,249);
+    border: none;
+    color:rgb(168,168,144);
+}
+
+.homepage-graphics {
+    max-width: 75px;
+    border-radius: 45px;
+}
+
+.konvajs-content {
+    background-color: white;
+    border-radius: 5px;
+}
+
+// Media Queries
+@media only screen and (max-device-width: 600px) {
+    h1 {
+        font-size: 3em;
+        color: rgb(168,168,144);
+        font-family: haboro-contrast-extended, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-transform: uppercase;
+    }
+
+    .homepage-graphics {
+        max-width: 50px;
+        border-radius: 45px;
+    }
+}

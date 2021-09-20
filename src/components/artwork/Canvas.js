@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import { React, Component } from 'react'
 import { Image } from 'react-konva'
+import './../../index.scss'
 
 class Artwork extends Component {
     state = {
@@ -30,7 +31,7 @@ class Artwork extends Component {
       const { context, isDrawing, mode } = this.state
 
       if (isDrawing) {
-        context.strokeStyle = '#df4b26'
+        context.strokeStyle = 'rgb(45,41,34)'
         context.lineJoin = 'round'
         context.lineWidth = 5
 
@@ -48,7 +49,6 @@ class Artwork extends Component {
         console.log('moveTo', localPos)
         context.moveTo(localPos.x, localPos.y)
 
-        // TODO: improve
         const stage = this.image.parent.parent
 
         const pos = stage.getPointerPosition()
@@ -74,7 +74,6 @@ class Artwork extends Component {
           ref={(node) => (this.image = node)}
           width={300}
           height={300}
-          stroke='blue'
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseMove={this.handleMouseMove}

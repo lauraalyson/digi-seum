@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import './index.scss'
 
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
@@ -14,7 +15,7 @@ import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
 import ArtworkCanvas from './components/artwork/ArtworkCanvas'
-// import Museum from './components/gallery/Museum'
+import Homepage from './components/Header/Homepage'
 
 class App extends Component {
   constructor (props) {
@@ -73,6 +74,12 @@ class App extends Component {
               <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
             )}
           />
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Homepage />
+            )}/>
           <AuthenticatedRoute
             user={user}
             path='/sign-out'
