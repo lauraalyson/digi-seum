@@ -29,7 +29,7 @@ class IndexArtwork extends Component {
       artworkJsx = 'Create some artwork!'
     } else {
       artworkJsx = artworks.map((artwork) => (
-        <div style={{ textAlign: 'center', display: 'flex' }} key={artwork._id}>
+        <div style={{ textAlign: 'center' }} key={artwork._id}>
           <Link style={{ textDecoration: 'none', textTransform: 'uppercase' }}className='artwork-gallery' to={`/artworks/${artwork._id}`}>
             <img style={{ borderRadius: '20px', margin: '15px px', maxWidth: '250px' }}className='gallery-zoom' src={artwork.img} />
             <h3>{artwork.title}</h3>

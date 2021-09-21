@@ -17,6 +17,10 @@ class Artwork extends Component {
       this.setState({ canvas, context })
     }
 
+    handleColor = (e) => {
+      this.setState({ color: e.target.value })
+    }
+
     handleMouseDown = () => {
       this.setState({ isDrawing: true })
       const stage = this.image.parent.parent
