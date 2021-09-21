@@ -15,8 +15,12 @@ class ClassicArtRandom extends Component {
     }
   }
 
+    imgId = [436009, 436530, 435809, 436918, 437382, 435884, 437755, 438144, 436484, 436533, 828241, 437977, 436572, 10809, 437316, 435864, 436904, 12544]
+
+    randomImgId = this.imgId[0]
+
     getData = (event) => {
-      getRandomArtwork('/436009')
+      getRandomArtwork(`/${this.randomImgId}`)
         .then((res) => this.setState({
           randomImg: res.data.primaryImage,
           artistBio: res.data.artistDisplayBio,
@@ -30,8 +34,11 @@ class ClassicArtRandom extends Component {
       return (
         <>
           <img src={randomImg}/>
-          <h3>{title}</h3>
-          <p>{artist}, <i>{artistBio}</i></p>
+          <br /><br />
+          <div className='random-historic-img-text'>
+            <h4>{title}</h4>
+            <p>{artist}, <i>{artistBio}</i></p>
+          </div>
           <Button onClick={this.getData} className='button-custom primary'>Get Inspired</Button><br />
         </>
       )
