@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/digi-seum/static/css/main.669d6f72.chunk.css",
-    "main.js": "/digi-seum/static/js/main.888b0db6.chunk.js",
-    "main.js.map": "/digi-seum/static/js/main.888b0db6.chunk.js.map",
+    "main.css": "/digi-seum/static/css/main.f1a5df55.chunk.css",
+    "main.js": "/digi-seum/static/js/main.df8f3999.chunk.js",
+    "main.js.map": "/digi-seum/static/js/main.df8f3999.chunk.js.map",
     "runtime-main.js": "/digi-seum/static/js/runtime-main.1b4c77bb.js",
     "runtime-main.js.map": "/digi-seum/static/js/runtime-main.1b4c77bb.js.map",
-    "static/js/2.0600b544.chunk.js": "/digi-seum/static/js/2.0600b544.chunk.js",
-    "static/js/2.0600b544.chunk.js.map": "/digi-seum/static/js/2.0600b544.chunk.js.map",
+    "static/js/2.97a4363f.chunk.js": "/digi-seum/static/js/2.97a4363f.chunk.js",
+    "static/js/2.97a4363f.chunk.js.map": "/digi-seum/static/js/2.97a4363f.chunk.js.map",
     "index.html": "/digi-seum/index.html",
-    "static/css/main.669d6f72.chunk.css.map": "/digi-seum/static/css/main.669d6f72.chunk.css.map",
-    "static/js/2.0600b544.chunk.js.LICENSE.txt": "/digi-seum/static/js/2.0600b544.chunk.js.LICENSE.txt"
+    "static/css/main.f1a5df55.chunk.css.map": "/digi-seum/static/css/main.f1a5df55.chunk.css.map",
+    "static/js/2.97a4363f.chunk.js.LICENSE.txt": "/digi-seum/static/js/2.97a4363f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1b4c77bb.js",
-    "static/js/2.0600b544.chunk.js",
-    "static/css/main.669d6f72.chunk.css",
-    "static/js/main.888b0db6.chunk.js"
+    "static/js/2.97a4363f.chunk.js",
+    "static/css/main.f1a5df55.chunk.css",
+    "static/js/main.df8f3999.chunk.js"
   ]
 }
