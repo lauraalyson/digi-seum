@@ -43,7 +43,7 @@ class CreateArtwork extends Component {
       const data = this.state
 
       createArtwork(data, user)
-        .then((res) => history.push('/artworks/' + res.data.artwork._id))
+        .then((res) => history.push('/artworks'))
         .then(() =>
           msgAlert({
             heading: 'Successfully created artwork.',

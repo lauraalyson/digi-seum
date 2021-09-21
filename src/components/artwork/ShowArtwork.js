@@ -5,7 +5,13 @@ import './../../index.scss'
 
 // API calls
 import { updateArtwork, showArtwork, deleteArtwork } from '../../api/artwork'
-import { updateArtworkFailure, updateArtworkSuccess, deleteArtworkSuccess, deleteArtworkFailure } from '../AutoDismissAlert/messages'
+import {
+  updateArtworkFailure,
+  updateArtworkSuccess,
+  deleteArtworkSuccess,
+  deleteArtworkFailure,
+  showArtworkFailure
+} from '../AutoDismissAlert/messages'
 
 // Bootstrap imports
 import Form from 'react-bootstrap/Form'
@@ -28,11 +34,17 @@ class ShowArtwork extends Component {
   }
 
   componentDidMount () {
-    const { match, user } = this.props
+    const { match, user, msgAlert } = this.props
 
     showArtwork(match.params.id, user)
       .then((res) => this.setState({ artwork: res.data.artwork }))
-      .catch((err) => console.log(err))
+      .catch((err) =>
+        msgAlert({
+          heading: 'Unable to create artwork.',
+          message: showArtworkFailure + err,
+          variant: 'danger'
+        })
+      )
   }
 
 handleClose = () => this.setState({ show: false })
@@ -60,10 +72,10 @@ handleUpdateSubmit = (event) => {
       })
     })
     .then(() => history.push('/artworks'))
-    .catch(() =>
+    .catch((err) =>
       msgAlert({
         heading: 'Unable to update artwork.',
-        message: updateArtworkFailure,
+        message: updateArtworkFailure + err,
         variant: 'danger'
       })
     )
