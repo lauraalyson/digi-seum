@@ -35,11 +35,8 @@ class ShowArtwork extends Component {
       .catch((err) => console.log(err))
   }
 
-// Popup modal open and close
 handleClose = () => this.setState({ show: false })
 handleShow = () => this.setState({ show: true })
-
-// Update form inputs
 handleChange = (event) => {
   const userInput = { [event.target.name]: event.target.value }
   this.setState((currState) => {
