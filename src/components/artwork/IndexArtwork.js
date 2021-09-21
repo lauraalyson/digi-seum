@@ -1,8 +1,7 @@
 // Show all artwork
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { indexArtwork } from '../../api/artwork'
-import Museum from '../gallery/Museum'
 import './../../index.scss'
 
 class IndexArtwork extends Component {
@@ -30,22 +29,20 @@ class IndexArtwork extends Component {
       artworkJsx = 'Create some artwork!'
     } else {
       artworkJsx = artworks.map((artwork) => (
-        <li className='artwork-gallery' key={artwork._id}>
-          <Link to={`/artworks/${artwork._id}`}>
-            {artwork.title}
-            <br />
-            <img className='gallery-zoom' src={artwork.img}/>
+        <div style={{ textAlign: 'center' }} key={artwork._id}>
+          <Link style={{ textDecoration: 'none', textTransform: 'uppercase' }}className='artwork-gallery' to={`/artworks/${artwork._id}`}>
+            <img style={{ borderRadius: '20px', margin: '15px px', maxWidth: '250px' }}className='gallery-zoom' src={artwork.img} />
+            <h3>{artwork.title}</h3>
           </Link>
-        </li>
+        </div>
       ))
     }
 
     return (
-      <>
-        <h3>Creations</h3>
-        <p>{artworkJsx}</p>
-        <Museum />
-      </>
+      <Fragment>
+        <h3 style={{ textAlign: 'center', fontSize: '2em', margin: '40px 0px' }}>Welcome to your own<br/>digital museum.</h3>
+        <div className='d-flex justify-content-center'>{artworkJsx}</div>
+      </Fragment>
     )
   }
 }

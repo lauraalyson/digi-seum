@@ -14,8 +14,8 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
-import ArtworkCanvas from './components/artwork/ArtworkCanvas'
 import Homepage from './components/Header/Homepage'
+import Museum from './components/museum/Museum'
 
 class App extends Component {
   constructor (props) {
@@ -120,10 +120,8 @@ class App extends Component {
           <AuthenticatedRoute
             user={user}
             exact
-            path='/artwork-canvas'
-            render={() => (
-              <ArtworkCanvas msgAlert={this.msgAlert} user={user} />
-            )}
+            path='/visit-dali'
+            render={() => <Museum msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

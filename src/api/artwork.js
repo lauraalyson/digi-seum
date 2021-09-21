@@ -1,6 +1,13 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
+export const getRandomArtwork = (artworkId) => {
+  return axios({
+    method: 'GET',
+    url: 'https://collectionapi.metmuseum.org/public/collection/v1/objects' + artworkId
+  })
+}
+
 export const createArtwork = (data, user) => {
   return axios({
     method: 'POST',

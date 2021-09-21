@@ -5,6 +5,13 @@ import './../../index.scss'
 
 // API calls
 import { updateArtwork, showArtwork, deleteArtwork } from '../../api/artwork'
+import {
+  updateArtworkFailure,
+  updateArtworkSuccess,
+  deleteArtworkSuccess,
+  deleteArtworkFailure,
+  showArtworkFailure
+} from '../AutoDismissAlert/messages'
 
 // Bootstrap imports
 import Form from 'react-bootstrap/Form'
@@ -27,19 +34,21 @@ class ShowArtwork extends Component {
   }
 
   componentDidMount () {
-    const { match, user } = this.props
+    const { match, user, msgAlert } = this.props
 
     showArtwork(match.params.id, user)
       .then((res) => this.setState({ artwork: res.data.artwork }))
-      .then((res) => console.log('This is the response from index artwork \n', res))
-      .catch((err) => console.log(err))
+      .catch((err) =>
+        msgAlert({
+          heading: 'Unable to create artwork.',
+          message: showArtworkFailure + err,
+          variant: 'danger'
+        })
+      )
   }
 
-// Popup modal open and close
 handleClose = () => this.setState({ show: false })
 handleShow = () => this.setState({ show: true })
-
-// Update form inputs
 handleChange = (event) => {
   const userInput = { [event.target.name]: event.target.value }
   this.setState((currState) => {
@@ -55,39 +64,56 @@ handleUpdateSubmit = (event) => {
 
   updateArtwork(data, id, user)
     .then(() => this.setState({ updateArt: { title: '', description: '' } }))
-    .then(() => history.push('/artworks'))
     .then(() => {
       msgAlert({
-        heading: 'updated!',
+        heading: 'Updated artwork.',
+        message: updateArtworkSuccess,
         variant: 'success'
       })
     })
-    .catch((err) => console.log(err))
+    .then(() => history.push('/artworks'))
+    .catch((err) =>
+      msgAlert({
+        heading: 'Unable to update artwork.',
+        message: updateArtworkFailure + err,
+        variant: 'danger'
+      })
+    )
 }
 
 handleDelete = (event) => {
-  const { match, user, history } = this.props
+  const { match, user, history, msgAlert } = this.props
   deleteArtwork(match.params.id, user)
+    .then(() =>
+      msgAlert({
+        heading: 'Deleted artwork.',
+        message: deleteArtworkSuccess,
+        variant: 'success'
+      })
+    )
     .then(() => history.push('/artworks'))
-    .catch((err) => console.log(err))
+    .catch(() =>
+      msgAlert({
+        heading: 'Unable to delete artwork.',
+        message: deleteArtworkFailure,
+        variant: 'danger'
+      })
+    )
 }
 
 render () {
   const { artwork } = this.state
-  // const { user, history, match } = this.props
 
   return (
     <Fragment>
-      <h3>Artwork:</h3>
-      <h5>{artwork.title}</h5>
-      <p>{artwork.description}</p>
       <img src={artwork.img} />
+      <h3>{artwork.title}</h3>
+      <p>{artwork.description}</p>
       <br />
-      <Button className='primary' onClick={this.handleDelete}>Delete</Button>
+      <Button className='primary button-custom' onClick={this.handleDelete}>Delete</Button>
 
-      {/* update modal */}
       <>
-        <Button className='primary' onClick={this.handleShow}>
+        <Button className='primary button-custom' onClick={this.handleShow}>
         Update
         </Button>
         <Modal show={this.state.show} onHide={this.handleClose}>
