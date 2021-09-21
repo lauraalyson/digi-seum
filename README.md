@@ -1,5 +1,5 @@
 # 🌩 Digi-seum
-Create your own digital masterpiece. Login and create a piece of art, tell us about what makes it inspiring and post it on your digi-seum wall. 
+Welcome to Digi-seum. Transform historic artwork into a masterpiece of today. The world is your (digital) oyster.
 
 ![App](https://media.giphy.com/media/U7li2uytWQfEAEXUem/giphy.gif?cid=790b7611fbcec45ab7c6d81d8828ffb5948bb939cef59da6&rid=giphy.gif&ct=g)
 
@@ -15,7 +15,7 @@ Create your own digital masterpiece. Login and create a piece of art, tell us ab
 5. Examine endpoints and other api documentation below.
 
 
-## [API Documentation](./../ApiDocumentation.md)
+## [API Documentation](https://github.com/lauraalyson/digi-seum/blob/main/ApiDocumentation.md)
 
 # Planning
 
