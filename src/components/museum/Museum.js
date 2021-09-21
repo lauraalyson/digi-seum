@@ -1,7 +1,5 @@
 import { React, Component } from 'react'
-// import { withRouter } from 'react-router-dom'
 import MuseumGoer from './MuseumGoer'
-
 class Museum extends Component {
   constructor (props) {
     super(props)
@@ -21,15 +19,10 @@ class Museum extends Component {
   handleClick (event) {
     const x = event.nativeEvent.clientX
     const y = event.nativeEvent.clientY
-    console.log('This is event.native event', event.nativeEvent)
-    console.log('this is x: ', x)
-    console.log('this is y: ', y)
     this.setState({ x, y })
   }
 
   render () {
-    console.log('this.state x and y; ', this.state.x, this.state.y)
-
     return (
       <div
         style={this.style}
@@ -44,7 +37,3 @@ class Museum extends Component {
 }
 
 export default Museum
-// ReactDOM.render(
-//   <GameBoard />,
-//   document.querySelector('#root')
-// )

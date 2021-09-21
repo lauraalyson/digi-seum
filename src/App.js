@@ -16,6 +16,7 @@ import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
 import ArtworkCanvas from './components/artwork/ArtworkCanvas'
 import Homepage from './components/Header/Homepage'
+import Museum from './components/museum/Museum'
 
 class App extends Component {
   constructor (props) {
@@ -124,6 +125,12 @@ class App extends Component {
             render={() => (
               <ArtworkCanvas msgAlert={this.msgAlert} user={user} />
             )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/visit-dali'
+            render={() => <Museum msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

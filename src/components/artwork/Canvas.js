@@ -46,7 +46,7 @@ class Artwork extends Component {
           x: this.lastPointerPosition.x - this.image.x(),
           y: this.lastPointerPosition.y - this.image.y()
         }
-        console.log('moveTo', localPos)
+
         context.moveTo(localPos.x, localPos.y)
 
         const stage = this.image.parent.parent
@@ -56,7 +56,7 @@ class Artwork extends Component {
           x: pos.x - this.image.x(),
           y: pos.y - this.image.y()
         }
-        console.log('lineTo', localPos)
+
         context.lineTo(localPos.x, localPos.y)
         context.closePath()
         context.stroke()

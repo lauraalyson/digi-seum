@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { createArtwork } from '../../api/artwork'
+import { createArtworkSuccess, createArtworkFailure } from '../AutoDismissAlert/messages'
 
 import ClassicArtRandom from './ClassicArtRandom'
 import Artwork from '../artwork/Canvas'
@@ -38,13 +39,25 @@ class CreateArtwork extends Component {
     onCreateArtwork = (event) => {
       event.preventDefault()
 
-      const { history, user } = this.props
+      const { history, user, msgAlert } = this.props
       const data = this.state
 
       createArtwork(data, user)
         .then((res) => history.push('/artworks/' + res.data.artwork._id))
+        .then(() =>
+          msgAlert({
+            heading: 'Successfully created artwork.',
+            message: createArtworkSuccess,
+            variant: 'success'
+          }))
         .then(() => this.setState({ title: '', description: '', img: '' }))
-        .catch((err) => console.log(console.log(err)))
+        .catch(() =>
+          msgAlert({
+            heading: 'Unable to create artwork.',
+            message: createArtworkFailure,
+            variant: 'danger'
+          })
+        )
     }
 
     render () {
@@ -56,7 +69,8 @@ class CreateArtwork extends Component {
             <div className='col-5 create-form'>
               <Form onSubmit={this.onCreateArtwork}>
                 <Form.Group controlId='title'>
-                  <h5>Title</h5>
+                  <br />
+                  <h3>Title</h3>
                   <Form.Control
                     type='text'
                     name='title'
@@ -67,7 +81,7 @@ class CreateArtwork extends Component {
                 </Form.Group><br />
 
                 <Form.Group controlId='description'>
-                  <h5>Description</h5>
+                  <h3>Description</h3>
                   <Form.Control
                     type='text'
                     name='description'

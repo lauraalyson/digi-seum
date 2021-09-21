@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
-import '../../index.scss'
 import { getRandomArtwork } from '../../api/artwork'
+import 'knuth-shuffle'
+import '../../index.scss'
 
 class ClassicArtRandom extends Component {
   constructor (props) {
@@ -15,12 +16,25 @@ class ClassicArtRandom extends Component {
     }
   }
 
-    imgId = [436009, 436530, 435809, 436918, 437382, 435884, 437755, 438144, 436484, 436533, 828241, 437977, 436572, 10809, 437316, 435864, 436904, 12544]
-
-    randomImgId = this.imgId[0]
-
     getData = (event) => {
-      getRandomArtwork(`/${this.randomImgId}`)
+      const imgId = [436009, 436530, 435809, 436918, 437382, 435884, 437755, 438144, 436484, 436533, 828241, 437977, 436572, 10809, 437316, 435864, 436904, 12544]
+
+      const randomizeImg = (imgId) => {
+        let currentIndex = imgId.length
+        let randomIndex = ''
+
+        while (currentIndex !== 0) {
+          randomIndex = Math.floor(Math.random() * currentIndex)
+          currentIndex--
+          [imgId[currentIndex], imgId[randomIndex]] = [imgId[randomIndex], imgId[currentIndex]]
+        }
+        return imgId
+      }
+
+      const random = randomizeImg(imgId)
+      const randomImgId = random[0]
+
+      getRandomArtwork(`/${randomImgId}`)
         .then((res) => this.setState({
           randomImg: res.data.primaryImage,
           artistBio: res.data.artistDisplayBio,
@@ -36,7 +50,7 @@ class ClassicArtRandom extends Component {
           <img src={randomImg}/>
           <br /><br />
           <div className='random-historic-img-text'>
-            <h4>{title}</h4>
+            <h3>{title}</h3>
             <p>{artist}, <i>{artistBio}</i></p>
           </div>
           <Button onClick={this.getData} className='button-custom primary'>Get Inspired</Button><br />
