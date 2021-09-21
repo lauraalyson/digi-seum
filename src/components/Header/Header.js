@@ -10,7 +10,6 @@ import './../../index.scss'
 const authenticatedOptions = (
   <Fragment>
     <NavDropdown title='Account' id='basic-nav-dropdown'>
-      <NavDropdown.Item><NavLink to='/artwork-canvas' className='nav-link'>ArtworkCanvas(not working)</NavLink></NavDropdown.Item>
       <NavDropdown.Item><NavLink to='/create-artwork' className='nav-link'>Create</NavLink></NavDropdown.Item>
       <NavDropdown.Item><NavLink to='/artworks' className='nav-link'>Visit Museum</NavLink></NavDropdown.Item>
       <NavDropdown.Item><NavLink to='/visit-dali' className='nav-link'>See Dali</NavLink></NavDropdown.Item>
