@@ -100,8 +100,8 @@ class CreateArtwork extends Component {
                     this.stageRef = node
                   }}
                   background={'white'}
-                  width={450}
-                  height={450}
+                  width={300}
+                  height={300}
                 >
                   <Layer>
                     <Artwork />
