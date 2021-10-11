@@ -111,7 +111,6 @@ render () {
       <p>{artwork.description}</p>
       <br />
       <Button className='primary button-custom' onClick={this.handleDelete}>Delete</Button>
-
       <>
         <Button className='primary button-custom' onClick={this.handleShow}>
         Edit
