@@ -32,7 +32,9 @@ class ClassicArtRandom extends Component {
       }
 
       const random = randomizeImg(imgId)
+      console.log('This is the randomized array: \n', random)
       const randomImgId = random[0]
+      console.log('This is the random image Id: \n', randomImgId)
 
       getRandomArtwork(`/${randomImgId}`)
         .then((res) => this.setState({

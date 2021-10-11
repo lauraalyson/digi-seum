@@ -1,6 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import url("https://use.typekit.net/uqi5muh.css");
 
+// rgb(40,40,40)
+
 $primary: rgb(145,142,113);
 $secondary: rgb(168,168,144);
 $tertiary:  rgb(44,39,32);
@@ -19,6 +21,14 @@ button {
     border: none;
 }
 
+button:active, .button:active, .button:focus, button.primary.btn.btn-primary:focus {
+    background-color: $secondary;
+}
+
+button.primary.btn-btn-primary:focus, .btn-primary:focus {
+    box-shadow: #4d5a3942;
+}
+
 .dropdown-item:active {
     background-color: transparent;
 }
@@ -33,7 +43,7 @@ ul, li {
 }
 
 h1 {
-    font-size: 3.4rem;
+    font-size: 4rem;
     color: rgb(168,168,144);
     font-family: haboro-contrast-extended, sans-serif;
     font-weight: 400;
@@ -87,10 +97,11 @@ Link {
     color: rgb(108,117,125);
 }
 
-.create-button:hover {
+.create-button:hover, .create-button:active {
     background-color: rgb(249,249,249);
     border: none;
     color:rgb(62,58,49);
+    padding-bottom: 1em;
 }
 
 .homepage-graphics {
@@ -102,11 +113,27 @@ Link {
     background-color: white;
     border-radius: 5px;
 }
+sup {
+    height: max-content;
+}
+nav {
+    border-bottom: 1px solid #D9D2BE;
+    margin-bottom: 1em;
+}
 
+html {
+    height: 100vh;
+}
 // Media Queries
+@media only screen and (max-device-width: 1000px) {
+    .homepage-main, h1 {
+        font-size: 1.3em;
+    }
+}
+
 @media only screen and (max-device-width: 600px) {
-    h1 {
-        font-size: 3em;
+    .homepage-main, h1 {
+        font-size: 2em;
         color: rgb(168,168,144);
         font-family: haboro-contrast-extended, sans-serif;
         font-weight: 400;

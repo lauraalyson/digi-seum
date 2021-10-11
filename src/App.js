@@ -15,7 +15,7 @@ import CreateArtwork from './components/artwork/CreateArtwork'
 import IndexArtwork from './components/artwork/IndexArtwork'
 import ShowArtwork from './components/artwork/ShowArtwork'
 import Homepage from './components/Header/Homepage'
-import Museum from './components/museum/Museum'
+// import Museum from './components/museum/Museum'
 
 class App extends Component {
   constructor (props) {
@@ -23,6 +23,10 @@ class App extends Component {
     this.state = {
       user: null,
       msgAlerts: []
+    }
+
+    this.style = {
+      backgroundColor: ''
     }
   }
 
@@ -117,12 +121,12 @@ class App extends Component {
             path='/artworks/:id'
             render={() => <ShowArtwork msgAlert={this.msgAlert} user={user} />}
           />
-          <AuthenticatedRoute
+          {/* <AuthenticatedRoute
             user={user}
             exact
             path='/visit-dali'
             render={() => <Museum msgAlert={this.msgAlert} user={user} />}
-          />
+          /> */}
         </main>
       </Fragment>
     )

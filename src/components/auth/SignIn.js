@@ -58,7 +58,11 @@ render () {
       <Button className='primary' style={{ border: 'none', borderRadius: '30px', margin: '6px 10px' }} onClick={this.handleShow}>
         Sign In
       </Button>
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal
+        aria-labelledby='contained-modal-title-vcenter'
+        centered
+        show={this.state.show}
+        onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign In</Modal.Title>
         </Modal.Header>

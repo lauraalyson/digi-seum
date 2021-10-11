@@ -56,7 +56,11 @@ render () {
 
   return (
     <>
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal
+        show={this.state.show}
+        onHide={this.handleClose}
+        aria-labelledby='contained-modal-title-vcenter'
+        centered>
 
         <Modal.Header closeButton>
           <Modal.Title>Change Password</Modal.Title>

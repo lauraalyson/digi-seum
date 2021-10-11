@@ -114,11 +114,15 @@ render () {
 
       <>
         <Button className='primary button-custom' onClick={this.handleShow}>
-        Update
+        Edit
         </Button>
-        <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal
+          aria-labelledby='contained-modal-title-vcenter'
+          centered
+          show={this.state.show}
+          onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Update Artwork</Modal.Title>
+            <Modal.Title>Edit Artwork</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
@@ -148,7 +152,7 @@ render () {
                 className='primary'
                 type='submit'
                 onClick={this.handleClose}>
-              Update
+              Edit
               </Button>
             </Form>
           </Modal.Body>

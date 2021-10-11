@@ -12,7 +12,7 @@ const authenticatedOptions = (
     <NavDropdown title='Account' id='basic-nav-dropdown'>
       <NavDropdown.Item><NavLink to='/create-artwork' className='nav-link'>Create</NavLink></NavDropdown.Item>
       <NavDropdown.Item><NavLink to='/artworks' className='nav-link'>Visit Museum</NavLink></NavDropdown.Item>
-      <NavDropdown.Item><NavLink to='/visit-dali' className='nav-link'>See Dali</NavLink></NavDropdown.Item>
+      {/* <NavDropdown.Item><NavLink to='/visit-dali' className='nav-link'>See Dali</NavLink></NavDropdown.Item> */}
       <NavDropdown.Item><NavLink to='/change-password' className='nav-link'>Change Password</NavLink></NavDropdown.Item>
       <NavDropdown.Item><NavLink to='/sign-out' className='nav-link'>Sign Out</NavLink></NavDropdown.Item>
     </NavDropdown>
