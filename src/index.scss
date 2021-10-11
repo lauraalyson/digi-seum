@@ -43,7 +43,7 @@ ul, li {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     color: rgb(168,168,144);
     font-family: haboro-contrast-extended, sans-serif;
     font-weight: 400;
@@ -123,16 +123,32 @@ nav {
 html {
     height: 100vh;
 }
+
+.artwork-jsx {
+    display: flex;
+    justify-content: center;
+}
+
+.artwork-jsx-container {
+    margin-bottom: 3em;
+}
+
 // Media Queries
 @media only screen and (max-device-width: 1000px) {
     .homepage-main, h1 {
-        font-size: 1.3em;
+        font-size: 1.7em;
     }
 }
 
 @media only screen and (max-device-width: 600px) {
     .homepage-main, h1 {
-        font-size: 2em;
+        font-size: 1.6em;;
+    }
+}
+
+@media only screen and (max-device-width: 600px) {
+    .homepage-main, h1 {
+        font-size: 1.5em;
         color: rgb(168,168,144);
         font-family: haboro-contrast-extended, sans-serif;
         font-weight: 400;
@@ -143,5 +159,9 @@ html {
     .homepage-graphics {
         max-width: 50px;
         border-radius: 45px;
+    }
+
+    .artwork-jsx {
+        display: block;
     }
 }
