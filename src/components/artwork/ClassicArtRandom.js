@@ -48,7 +48,7 @@ class ClassicArtRandom extends Component {
     render () {
       const { randomImg, artist, artistBio, title } = this.state
       return (
-        <>
+        <div className='random-art'>
           <img src={randomImg}/>
           <br /><br />
           <div className='random-historic-img-text'>
@@ -56,7 +56,7 @@ class ClassicArtRandom extends Component {
             <p>{artist}, <i>{artistBio}</i></p>
           </div>
           <Button onClick={this.getData} className='button-custom primary'>Get Inspired</Button><br />
-        </>
+        </div>
       )
     }
 }

@@ -73,7 +73,6 @@ img {
 
 .button-custom{
     border-radius: 20px;
-    margin: 0px 2px;
 }
 
 .homepage-main {
@@ -84,24 +83,24 @@ img {
 .create-form {
     background-color: $secondary;
     padding: 20px;
-    border-radius: 10px;
 }
 
 Link {
     text-decoration: none;
 }
-
+.random-art {
+    padding-bottom: 2em;
+}
 .create-button {
     background-color: rgb(249,249,249);
     border: none;
     color: rgb(108,117,125);
 }
 
-.create-button:hover, .create-button:active {
+.create-button:hover, .create-button:active, .create-button:focus, .create-button:focus-visible {
     background-color: rgb(249,249,249);
     border: none;
     color:rgb(62,58,49);
-    padding-bottom: 1em;
 }
 
 .homepage-graphics {
