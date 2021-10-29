@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/digi-seum/static/css/main.3b781f35.chunk.css",
-    "main.js": "/digi-seum/static/js/main.392647cc.chunk.js",
-    "main.js.map": "/digi-seum/static/js/main.392647cc.chunk.js.map",
+    "main.js": "/digi-seum/static/js/main.d286f00e.chunk.js",
+    "main.js.map": "/digi-seum/static/js/main.d286f00e.chunk.js.map",
     "runtime-main.js": "/digi-seum/static/js/runtime-main.1b4c77bb.js",
     "runtime-main.js.map": "/digi-seum/static/js/runtime-main.1b4c77bb.js.map",
     "static/js/2.c2a18801.chunk.js": "/digi-seum/static/js/2.c2a18801.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.1b4c77bb.js",
     "static/js/2.c2a18801.chunk.js",
     "static/css/main.3b781f35.chunk.css",
-    "static/js/main.392647cc.chunk.js"
+    "static/js/main.d286f00e.chunk.js"
   ]
 }
