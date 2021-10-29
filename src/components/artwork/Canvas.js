@@ -78,9 +78,9 @@ class Artwork extends Component {
           ref={(node) => (this.image = node)}
           width={300}
           height={300}
-          onContentTouchstart={this.handleMouseDown}
-          onContentTouchmove={this.handleMouseMove}
-          onContentTouchend={this.handleMouseUp}
+          onTouchStart={this.handleMouseDown}
+          onTouchMove={this.handleMouseMove}
+          onTouchEnd={this.handleMouseUp}
           onMouseDown={this.handleMouseDown}
           onMouseUp={this.handleMouseUp}
           onMouseMove={this.handleMouseMove}

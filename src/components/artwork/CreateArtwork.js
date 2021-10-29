@@ -197,9 +197,9 @@ class CreateArtwork extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
-                  onContentTouchstart={this.handleMouseDown}
-                  onContentTouchmove={this.handleMouseMove}
-                  onContentTouchend={this.handleMouseUp}
+                  onTouchStart={this.handleMouseDown}
+                  onTouchMove={this.handleMouseMove}
+                  onTouchEnd={this.handleMouseUp}
                   background={'white'}
                   width={300}
                   height={300}
