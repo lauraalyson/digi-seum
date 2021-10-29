@@ -18,9 +18,107 @@ class CreateArtwork extends Component {
     this.state = {
       title: '',
       description: '',
-      img: ''
+      img: '',
+      isDrawing: false,
+      mode: 'brush'
     }
   }
+
+  handleMouseDown = () => {
+    this.setState({ isDrawing: true })
+    const stage = this.image.parent.parent
+    this.lastPointerPosition = stage.getPointerPosition()
+  }
+
+    handleMouseUp = () => {
+      this.setState({ isDrawing: false })
+    }
+
+    handleMouseMove = () => {
+      const { context, isDrawing, mode } = this.state
+
+      if (isDrawing) {
+        context.strokeStyle = 'rgb(45,41,34)'
+        context.lineJoin = 'round'
+        context.lineWidth = 5
+
+        if (mode === 'brush') {
+          context.globalCompositeOperation = 'source-over'
+        } else if (mode === 'eraser') {
+          context.globalCompositeOperation = 'destination-out'
+        }
+        context.beginPath()
+
+        let localPos = {
+          x: this.lastPointerPosition.x - this.image.x(),
+          y: this.lastPointerPosition.y - this.image.y()
+        }
+
+        context.moveTo(localPos.x, localPos.y)
+
+        const stage = this.image.parent.parent
+
+        const pos = stage.getPointerPosition()
+        localPos = {
+          x: pos.x - this.image.x(),
+          y: pos.y - this.image.y()
+        }
+
+        context.lineTo(localPos.x, localPos.y)
+        context.closePath()
+        context.stroke()
+        this.lastPointerPosition = pos
+        this.image.getLayer().draw()
+      }
+    }
+
+    handleMouseDown = () => {
+      this.setState({ isDrawing: true })
+      const stage = this.image.parent.parent
+      this.lastPointerPosition = stage.getPointerPosition()
+    }
+
+    handleMouseUp = () => {
+      this.setState({ isDrawing: false })
+    }
+
+    handleMouseMove = () => {
+      const { context, isDrawing, mode } = this.state
+
+      if (isDrawing) {
+        context.strokeStyle = 'rgb(45,41,34)'
+        context.lineJoin = 'round'
+        context.lineWidth = 5
+
+        if (mode === 'brush') {
+          context.globalCompositeOperation = 'source-over'
+        } else if (mode === 'eraser') {
+          context.globalCompositeOperation = 'destination-out'
+        }
+        context.beginPath()
+
+        let localPos = {
+          x: this.lastPointerPosition.x - this.image.x(),
+          y: this.lastPointerPosition.y - this.image.y()
+        }
+
+        context.moveTo(localPos.x, localPos.y)
+
+        const stage = this.image.parent.parent
+
+        const pos = stage.getPointerPosition()
+        localPos = {
+          x: pos.x - this.image.x(),
+          y: pos.y - this.image.y()
+        }
+
+        context.lineTo(localPos.x, localPos.y)
+        context.closePath()
+        context.stroke()
+        this.lastPointerPosition = pos
+        this.image.getLayer().draw()
+      }
+    }
 
     handleExportClick = (event) => {
       const imgUrl = this.stageRef.getStage().toDataURL({ mimeType: 'image/png' })
@@ -99,6 +197,9 @@ class CreateArtwork extends Component {
                   ref={(node) => {
                     this.stageRef = node
                   }}
+                  onContentTouchstart={this.handleMouseDown}
+                  onContentTouchmove={this.handleMouseMove}
+                  onContentTouchend={this.handleMouseUp}
                   background={'white'}
                   width={300}
                   height={300}
