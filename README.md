@@ -27,7 +27,7 @@ Welcome to Digi-seum.  Transform historic artwork into a masterpiece of today. T
 Features                     |     Visuals
 :---------------------------:|:-----------------------:
 Style Overview   |  <img width="2928" alt="OverView" src="https://user-images.githubusercontent.com/74627896/142492556-bf6c4900-c054-4983-8003-06d92673d2a8.png">
-Wireframe/Mockup |  <img width="895" alt="Screen Shot 2021-11-18 at 3 36 08 PM" src="https://user-images.githubusercontent.com/74627896/142492751-d74dcb49-872d-46a8-9a9d-046a262dd1c4.png">
+Konva.js Integration |  <img width="895" alt="Screen Shot 2021-11-18 at 3 36 08 PM" src="https://user-images.githubusercontent.com/74627896/142492751-d74dcb49-872d-46a8-9a9d-046a262dd1c4.png">
 Wireframe/Mockup |  <img width="3558" alt="Frame 1" src="https://user-images.githubusercontent.com/74627896/142492644-d7e9c06c-a4d9-47af-bb7b-34086540120d.png">
 Bootstrap Modals |  <img width="3433" alt="Frame 2" src="https://user-images.githubusercontent.com/74627896/142492576-85768ba7-84e5-4637-a808-ae0552e0b21d.png">
 
